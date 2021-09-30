@@ -1,0 +1,15 @@
+current directory: /home/elgnonvis/Dive_Into_Code/Ruby/On_rails/Everyleaf/vendor/bundle bundle config set path vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/home/elgnonvis/.rbenv/versions/2.6.5/bin/ruby -I /home/elgnonvis/.rbenv/versions/2.6.5/lib/ruby/site_ruby/2.6.0 -r ./siteconf20210929-111373-1vxrxvv.rb extconf.rb
+creating Makefile
+
+current directory: /home/elgnonvis/Dive_Into_Code/Ruby/On_rails/Everyleaf/vendor/bundle bundle config set path vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= clean
+
+current directory: /home/elgnonvis/Dive_Into_Code/Ruby/On_rails/Everyleaf/vendor/bundle bundle config set path vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\=
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/elgnonvis/Dive_Into_Code/Ruby/On_rails/Everyleaf/vendor/bundle bundle config set path vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20210929-111373-pmjti7
