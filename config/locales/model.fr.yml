@@ -1,0 +1,8 @@
+fr:
+  activerecord:
+    models:
+      task: tache
+    attributes:
+      task:
+        task_name: nom de la tâche
+        task_details: détails de ta tâche
