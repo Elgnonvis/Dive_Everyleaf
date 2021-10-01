@@ -1,6 +1,6 @@
 # README
-Do # bundle install --path vendor/bundle
 
+# bundle install --path vendor/bundle
 # Model: Task
 
 * id : integer
@@ -8,3 +8,5 @@ Do # bundle install --path vendor/bundle
 * task_name : string
 
 * task_details : text
+
+# How to deploy to heroku

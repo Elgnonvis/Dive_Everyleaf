@@ -44,4 +44,15 @@ RSpec.describe 'Task management function', type: :system do
      end
   end
 
+  context 'When tasks are arranged in descending order of creation date and time' do
+    it 'New task is displayed at the top' do
+      FactoryBot.create(:task, task_name: 'Test_task1', task_details: 'some details about Test_task1')
+      FactoryBot.create(:task, task_name: 'Test_task2', task_details: 'some details about Test_task2')
+      FactoryBot.create(:task, task_name: 'Must be on top', task_details: 'some details about the task')
+      visit tasks_path
+      tasks = all('.task_row')
+      expect(tasks[0]).to have_content 'on top'
+    end
+  end
+
 end

@@ -13,8 +13,8 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
-      <td><%= task.task_name %></td>
+      <tr class="task_row" >
+        <td><%= task.task_name %></td>
         <td><%= task.task_details %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
