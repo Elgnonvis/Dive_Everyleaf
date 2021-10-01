@@ -1,24 +1,10 @@
 # README
+Do # bundle install --path vendor/bundle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Model: Task
 
-Things you may want to cover:
+* id : integer
 
-* Ruby version
+* task_name : string
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* task_details : text
