@@ -1,4 +1,4 @@
-class AddConstraint < ActiveRecord::Migration[5.2]
+class AddConstraints < ActiveRecord::Migration[5.2]
   def change
     change_column :tasks, :task_name, :string, null: false
     change_column :tasks, :task_details, :text, null: false
