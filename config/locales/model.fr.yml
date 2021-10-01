@@ -1,7 +1,7 @@
 fr:
   activerecord:
     models:
-      task: tache
+      task: tâche
     attributes:
       task:
         task_name: nom de la tâche
