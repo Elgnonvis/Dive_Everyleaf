@@ -8,6 +8,9 @@
 * task_name : string
 
 * task_details : text
+* priority : integer
+* status : string
+* deadline : datetime
 
 # How to deploy this App to heroku ?
 1. Gem version : 3.2.28
