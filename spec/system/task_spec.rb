@@ -11,12 +11,14 @@ RSpec.describe 'Task management function', type: :system do
     context 'When creating a new task' do
       it 'The created task is displayed' do
          # Create a task for use in testing
-         task = FactoryBot.create(:task, task_name: 'task', task_details: 'welcome to testing world')
+         date = DateTime.now.to_date
+         task = FactoryBot.create(:task, task_name: 'task', task_details: 'welcome to testing world', deadline: date)
          #Transition to task list page
          visit tasks_path
          # The text "task" appears on the visited (transitioned) page (task list page)
          # expect (confirm/expect) that have_content is included (is included)
          expect(page).to have_content 'testing world'
+         expect(page).to have_content date
          # The result of expect is true Then test successful, false If so, the result is output as a failure
       end
     end
@@ -46,9 +48,9 @@ RSpec.describe 'Task management function', type: :system do
 
   context 'When tasks are arranged in descending order of creation date and time' do
     it 'New task is displayed at the top' do
-      FactoryBot.create(:task, task_name: 'Test_task1', task_details: 'some details about Test_task1')
-      FactoryBot.create(:task, task_name: 'Test_task2', task_details: 'some details about Test_task2')
-      FactoryBot.create(:task, task_name: 'Must be on top', task_details: 'some details about the task')
+      FactoryBot.create(:task, task_name: 'Test_task1', task_details: 'some details about Test_task1', deadline: Date.new(2021,10,10))
+      FactoryBot.create(:task, task_name: 'Test_task2', task_details: 'some details about Test_task2', deadline: Date.new(2021,10,10))
+      FactoryBot.create(:task, task_name: 'Must be on top', task_details: 'some details about the task', deadline: Date.new(2021,10,10))
       visit tasks_path
       tasks = all('.task_row')
       expect(tasks[0]).to have_content 'on top'

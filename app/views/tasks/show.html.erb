@@ -1,12 +1,24 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>Name:</strong>
+  <strong>Name: </strong>
   <%= @task.task_name %>
 </p>
 
 <p>
-  <strong>Details:</strong>
+  <strong>Details: </strong>
   <%= @task.task_details %>
+</p>
+<p>
+  <strong>Priority: </strong>
+  <%= @task.priority %>
+</p>
+<p>
+  <strong>Status: </strong>
+  <%= @task.status %>
+</p>
+<p>
+  <strong>Deadline: </strong>
+  <%= @task.deadline %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
