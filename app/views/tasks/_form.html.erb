@@ -13,12 +13,27 @@
 
   <div class="field">
     <%= form.label :task_name %>
-    <%= form.text_field :task_name %>
+    <%= form.text_field :task_name, id: "task" %>
   </div>
 
   <div class="field">
     <%= form.label :task_details %>
     <%= form.text_area :task_details %>
+  </div>
+
+   <div class="field">
+    <%= form.label :priority %>
+    <%= form.select :priority, options_for_select([[''],['High'], ['Medium'], ['Low']]), id: "priority" %>
+  </div>
+
+   <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select([[''],['Unstarted'], ['In progress'], ['Completed']]), id: "status" %>
+  </div>
+
+   <div class="field">
+    <%= form.label :deadline %>
+    <%= form.date_select :deadline, id: "deadline" %>
   </div>
 
   <div class="actions">
