@@ -59,11 +59,7 @@ RSpec.describe 'Task management function', type: :system do
 
    #Les tests de l'étape 3
    describe 'Search function' do
-    # before do
-    #   task = FactoryBot.create(:task, task_name: 'task', task_details: 'some content', status: 'in progress', priority: 1, limit_date: Date.new(2021,9,9))
-    #   task1 = FactoryBot.create(:task, task_name: 'task1', task_details: 'some content', status: 'unstarted', priority: 1, limit_date: Date.new(2021,9,9))
-
-    # end
+    
     context 'If you do a fuzzy search by Name' do
       it "Filter by tasks that include search keywords" do
         visit tasks_path
