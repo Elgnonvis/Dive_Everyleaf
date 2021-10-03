@@ -78,3 +78,11 @@ div.box
 <div class="row">
     
 </div>
+
+<%= form_with url: tasks_path, method: :get, local: true, class:"form-inline my-2 my-lg-0" do |form| %>
+      <%= form.text_field :task_name ,class: "form-control mr-sm-2" %>
+      <%= form.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: 'Select status'}, {class: "form-control mr-sm-2"}) %>
+      
+    <%= form.submit "Search", name: nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+     
+<% end %>
