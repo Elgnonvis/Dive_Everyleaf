@@ -13,7 +13,7 @@
        <%= f.label :status %>
        <%= f.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: 'Select status'}, {class: "form-control"}) %>
     </div>
-        <%= f.submit "Search", name: nil, class: " col-6 btn btn-outline-success my-2 my-sm-0 mr-5" %>
+        <%= f.submit "Search", name: nil, data: { disable_with: false }, class: " col-6 btn btn-outline-success my-2 my-sm-0 mr-5" %>
     <% end %>
     <div class=" mr-2">
       <a href = "<%= tasks_path(sort_expired: "true") %>" class="btn btn-primary">Sort by end deadline</a>
