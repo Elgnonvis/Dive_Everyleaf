@@ -1,0 +1,80 @@
+div.box
+<div></div>
+<div class="form-group">
+    <input class="form-control" type="text" name="" id="" value="">
+</div>
+
+<div class="form-group">
+    <input type="search" name="" id="">
+</div>
+<input type="submit" value="">
+
+<div class="row">
+    <div class="col-12">
+        <div class="col-6">
+            <div class="col-3">
+                <%= form.label :task_name, "Task name" %>
+                <%= form.text_field :task_name %>
+            </div>
+            <div class="col-3">
+                <%= form.label :status, "Status" %>
+                <%= form.select :status, options_for_select([[''],['Unstarted'], ['In progress'], ['Completed']])%>
+            </div>
+            <div class="col-6">
+                <%= form.submit "Search", name: nil, class: "btn" %>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-3">
+                <a href = "<%= tasks_path(sort_expired: "true") %>" class="btn btn-primary">Sort by end deadline</a>
+            </div>
+            <div class="col-3">
+                <a href = "<%= tasks_path(sort_priority: "true") %>" class="btn btn-primary">Sort by priority </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="col"></div>
+
+
+
+
+<a href = "<%= tasks_path(sort_expired: "true") %>" class="btn btn-primary">Sort by end deadline</a> ||
+<a href = "<%= tasks_path(sort_priority: "true") %>" class="btn btn-primary">Sort by priority </a>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="col-6">
+            <%= form_with url: tasks_path, method: :get, local: true do |form| %>
+                <div class="col-2">
+                    <%= form.label :task_name, "Task name", class: 'col-1' %>
+                    <%= form.text_field :task_name, class: 'col-1' %>
+                </div>
+                <div class="col-2">
+                    <%= form.label :status, "Status", class: 'col-1' %>
+                    <%= form.select :status, options_for_select([[''],['Unstarted'], ['In progress'], ['Completed']]), class: 'col-1' %>
+                </div>
+                <div class="col-2">
+                    <%= form.submit "Search", name: nil, class: "btn" %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="col-6">
+            <div class="col-3">
+                <a href = "<%= tasks_path(sort_expired: "true") %>" class="btn btn-primary">Sort by end deadline</a>
+            </div>
+            <div class="col-3">
+                <a href = "<%= tasks_path(sort_priority: "true") %>" class="btn btn-primary">Sort by priority </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    
+</div>

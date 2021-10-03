@@ -3,7 +3,7 @@ class Task < ApplicationRecord
     validates :task_details, presence: true
 	# self.per_page = 10
 	# willPaginate.per_page = 10
-	paginates_per 4
+	paginates_per 5
 	enum priority: {Low: 1, Medium: 2 , High: 3}
 	
     # scope :task_name_search, -> (query) {where("task_name LIKE ?", "%#{query}%")}

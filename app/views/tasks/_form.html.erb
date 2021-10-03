@@ -16,27 +16,24 @@
     <%= form.text_field :task_name, id: "task", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :task_details %>
-    <%= form.text_area :task_details %>
+    <%= form.text_area :task_details, class: 'form-control' %>
   </div>
 
-   <div class="field">
+   <div class="form-group">
     <%= form.label :priority %>
-    <%= form.select :priority, ['Low', 'Medium', 'High'], id: "priority" %>
+    <%= form.select :priority, ['Low', 'Medium', 'High'], id: "priority", class: 'form-control' %>
   </div>
 
-   <div class="field">
+   <div class="form-group">
     <%= form.label :status %>
-    <%= form.select :status, ['Unstarted','In progress', 'Completed'], id: "status" %>
+    <%= form.select :status, ['Unstarted','In progress', 'Completed'], id: "status", class: 'form-control' %>
   </div>
 
-   <div class="field">
-    <%= form.label :deadline %>
-    <%= form.datetime_select :deadline, id: "deadline", order: [:day, :month, :year, :hour, :minute], use_month_numbers: false %>
+   <div class="form-group">
+      <%= form.label :deadline %>
+      <%= form.datetime_select :deadline, id: "deadline", order: [:day, :month, :year, :hour, :minute], class: 'form-control', use_month_numbers: false %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+   <button class="form-actions btn btn-primary w-75" type="submit">Create Task </button> 
 <% end %>
