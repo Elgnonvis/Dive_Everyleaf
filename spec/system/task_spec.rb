@@ -2,10 +2,10 @@
 require 'rails_helper'
 RSpec.describe 'Task management function', type: :system do
 
-  # before do
-  #   FactoryBot.create(:task)
-  #   FactoryBot.create(:second_task)
-  # end
+  before(:each) do
+    FactoryBot.create(:task)
+    FactoryBot.create(:second_task)
+  end
 
   describe 'New creation function' do
     context 'When creating a new task' do
@@ -48,13 +48,54 @@ RSpec.describe 'Task management function', type: :system do
 
   context 'When tasks are arranged in descending order of creation date and time' do
     it 'New task is displayed at the top' do
-      FactoryBot.create(:task, task_name: 'Test_task1', task_details: 'some details about Test_task1', deadline: Date.new(2021,10,10))
-      FactoryBot.create(:task, task_name: 'Test_task2', task_details: 'some details about Test_task2', deadline: Date.new(2021,10,10))
-      FactoryBot.create(:task, task_name: 'Must be on top', task_details: 'some details about the task', deadline: Date.new(2021,10,10))
+      FactoryBot.create(:task, task_name: 'Test_task1', task_details: 'some details about Test_task1', priority: 'High', deadline: Date.new(2021,10,10))
+      FactoryBot.create(:task, task_name: 'Test_task2', task_details: 'some details about Test_task2', priority: 'Medium', deadline: Date.new(2021,10,10))
+      FactoryBot.create(:task, task_name: 'Must be on top', task_details: 'some details about the task', priority: 'Low', deadline: Date.new(2021,10,10))
       visit tasks_path
       tasks = all('.task_row')
       expect(tasks[0]).to have_content 'on top'
     end
   end
+
+   #Les tests de l'étape 3
+   describe 'Search function' do
+    # before do
+    #   task = FactoryBot.create(:task, task_name: 'task', task_details: 'some content', status: 'in progress', priority: 1, limit_date: Date.new(2021,9,9))
+    #   task1 = FactoryBot.create(:task, task_name: 'task1', task_details: 'some content', status: 'unstarted', priority: 1, limit_date: Date.new(2021,9,9))
+
+    # end
+    context 'If you do a fuzzy search by Name' do
+      it "Filter by tasks that include search keywords" do
+        visit tasks_path
+        fill_in 'Task name' , with: 'Task'
+        click_on 'Search'
+        tasks = all('.task_row')
+        expect(tasks[0]).to have_content 'Task'
+      end
+    end
+    context 'When you search for status' do
+      it "Tasks that exactly match the status are narrowed down" do
+        visit tasks_path
+        select 'In progress', from: 'Status'
+        click_on 'Search'
+        tasks = all('.task_status')
+        tasks.each do |task|
+          expect(task).to have_content 'In progress'
+        end
+
+      end
+    end
+    context 'Name performing fuzzy search of name and status search' do
+      it "Narrow down tasks that include search keywords in the Title and exactly match the status" do
+        visit tasks_path
+        fill_in 'Task name' , with: 'Task'
+        select 'In progress', from: 'Status'
+        click_on 'Search'
+        expect(page).to have_content 'Task'
+        expect(page).to have_content 'In progress'
+      end
+    end
+  end
+  
 
 end

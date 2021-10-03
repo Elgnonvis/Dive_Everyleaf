@@ -2,15 +2,16 @@
 <h1>Tasks list</h1>
 <nav>
 <%= form_with url: tasks_path, method: :get, local: true do |form| %>
-  <%= form.label :task_name, "Task name:" %>
-  <%= form.text_field :task_name %>
+  <%= form.label :task_name, "Task name" %>
+  <%= form.text_field :task_name %> <br>
+  
   <%= form.label :status, "Status" %>
   <%= form.select :status, options_for_select([[''],['Unstarted'], ['In progress'], ['Completed']])%>
-  <%= form.submit "Search" %>
+  <%= form.submit "Search", name: nil, class: "button" %>
 <% end %>
 </nav>
 <p>
-  <%= link_to "sort by end deadline", tasks_path(sort_expired: "true") , value: "dater" %>
+  <%= link_to "sort by end deadline", tasks_path(sort_expired: "true") %> ||
   <%= link_to "sort by priority", tasks_path(sort_priority: "true") %>
   </p>
 
@@ -44,4 +45,5 @@
 
 <br>
 
+<%= paginate @tasks %>
 <%= link_to 'New Task', new_task_path %>

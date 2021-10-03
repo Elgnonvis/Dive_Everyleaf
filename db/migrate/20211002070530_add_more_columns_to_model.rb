@@ -5,3 +5,6 @@ class AddMoreColumnsToModel < ActiveRecord::Migration[5.2]
     add_column :tasks, :deadline, :datetime, default: "31/09/2021 00:00"
   end
 end
+
+# CURRENT_TIMESTAMP
+#getdate()

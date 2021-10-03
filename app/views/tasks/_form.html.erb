@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :task_name %>
-    <%= form.text_field :task_name, id: "task" %>
+    <%= form.text_field :task_name, id: "task", class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -23,17 +23,17 @@
 
    <div class="field">
     <%= form.label :priority %>
-    <%= form.select :priority, options_for_select([[''],['High'], ['Medium'], ['Low']]), id: "priority" %>
+    <%= form.select :priority, ['Low', 'Medium', 'High'], id: "priority" %>
   </div>
 
    <div class="field">
     <%= form.label :status %>
-    <%= form.select :status, options_for_select([[''],['Unstarted'], ['In progress'], ['Completed']]), id: "status" %>
+    <%= form.select :status, ['Unstarted','In progress', 'Completed'], id: "status" %>
   </div>
 
    <div class="field">
     <%= form.label :deadline %>
-    <%= form.date_select :deadline, id: "deadline" %>
+    <%= form.datetime_select :deadline, id: "deadline", order: [:day, :month, :year, :hour, :minute], use_month_numbers: false %>
   </div>
 
   <div class="actions">
