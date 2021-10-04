@@ -4,12 +4,21 @@
     <title>Everyleaf</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+     <div class="container" style = "padding-top: 4rem">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>" role = "alert"> <%= msg %></div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+    <%= render "partials/footer" %>
   </body>
 </html>

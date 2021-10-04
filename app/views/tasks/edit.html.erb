@@ -1,6 +1,11 @@
+
+<div class=" container-fluid d-flex flex-column justify-content-center w-50  ">
 <h1>Editing Task</h1>
 
 <%= render 'form', task: @task %>
-
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<button class="btn btn-warning w-50" type="submit">Update Task </button> <br>
+<div>
+    <a href = "<%= task_path(@task) %>" class="btn btn-info w-25">Show</a>
+    <a href = "<%= tasks_path %>" class="btn btn-dark w-25">Back</a>  
+</div>
+</div> <br>

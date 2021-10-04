@@ -13,6 +13,8 @@ gem 'puma', '~> 3.11'
 
 # Frontend
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
+gem "font-awesome-rails"
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
