@@ -12,12 +12,13 @@ RSpec.describe 'Task management function', type: :system do
       it 'The created task is displayed' do
          # Create a task for use in testing
          date = DateTime.now.to_date
-         task = FactoryBot.create(:task, task_name: 'task', task_details: 'welcome to testing world', deadline: date)
+         task = FactoryBot.create(:task, task_name: 'task', task_details: 'welcome to testing world', status: 'Completed', deadline: date)
          #Transition to task list page
          visit tasks_path
          # The text "task" appears on the visited (transitioned) page (task list page)
          # expect (confirm/expect) that have_content is included (is included)
          expect(page).to have_content 'testing world'
+         expect(page).to have_content 'Completed'
          expect(page).to have_content date
          # The result of expect is true Then test successful, false If so, the result is output as a failure
       end
