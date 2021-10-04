@@ -1,0 +1,39 @@
+<div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
+  <%# <div>
+    <img style = "padding-bottom: 1rem;" src="/instagram.png" class="img-fluid" alt="" >
+  </div> %>
+
+  <h1 class ="d-flex flex-column container justify-content-center align-itmes-center">Inscrivez-vous pour voir les photos de vos amis</h1> <br>
+
+  <%= form_with(model: @user, local: true, html: {class:'form-horizontal'}) do |f| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
+        
+    <div class="field">
+      <%= f.email_field :email, placeholder: 'E-mail', class: 'form-control' %>
+    </div> <br>
+
+    <div class="field">
+      <%= f.password_field :password, placeholder: 'Password here', class: 'form-control' %>
+    </div><br>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, placeholder: 'Confirmation of password', class: 'form-control' %>
+    </div><br>
+    <div class="actions">
+      <button class="btn btn-success w-100" type="submit">Create an account </button>
+      </div> <br>
+  <% end %>
+</div> <br>
+
+<div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
+  <p> <strong>Vous n'avez pas de compte? </strong> <a class="text-decoration-none m-4" href="<%= new_session_path %>">Connectez-vous</a></p>
+</div> <br> <br> <br> <br>

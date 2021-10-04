@@ -1,0 +1,21 @@
+<div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
+    <div><img style = "padding-bottom: 1rem;" src="/instagram.png" class="img-fluid" alt="" ></div>
+    <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>        
+        <div>
+            <%= f.email_field :email, placeholder: "Mail", class: 'form-control' %>
+        </div> <br>
+
+        <div>
+            <%= f.password_field :password, placeholder: 'Mot de passe', class: 'form-control' %>
+        </div><br>
+
+        <div>
+            <button class="btn btn-success w-100" type="submit">Connexion </button>
+        </div><br>
+        
+    <% end %>
+</div> <br>
+
+<div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
+    <p><strong>Vous n'avez pas de compte?</strong>  <a class="text-decoration-none m-4" href="<%= new_user_path %>">Inscrivez-vous</a></p>
+</div>
