@@ -1,0 +1,38 @@
+<%= render "partials/adminusersindex" %>
+<div class="container text-center mt-3">
+    <h1>User list</h1> <br>
+
+    <div>
+        <table class="table table-striped w-100 text-left">
+            <thead class="thead-dark">
+                <th>N°</th>
+                <th>Identity</th>
+                <th>Email</th>
+                <th>Tasks</th>
+                <th>Role</th>
+                <th> Actions </th>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td> <%=user.id%> </td>
+                        <td> <%=user.id%> </td>
+                        <td class="user-name"> <%=user.email%> </td>
+                        <td> <%=user.tasks.count%> </td> 
+                        
+                        <% if user.admin %>
+                            <td><%= link_to 'Remove admin', class:"btn btn-sm btn-outline-success" %></td>
+                        <% else %>
+                            <td><%= link_to 'Add to admin', class:"btn btn-sm btn-outline-success" %></td>
+                        <% end %> 
+                        <td>
+                            <a href = "<%= admin_user_path(user.id) %>" class="btn btn-sm btn-outline-success">Show</a>
+                            <a href = "<%= edit_admin_user_path(user.id) %>" class="btn btn-sm btn-outline-warning">Edit</a>
+                            <a href = "<%= admin_user_path(user.id) %>" class="btn btn-sm btn-outline-danger delete", data-confirm="Are you sure?" data-method="DELETE">Destroy</a>
+                        </td>                      
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

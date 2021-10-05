@@ -3,7 +3,8 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all().order(created_at: :desc)
+    # @tasks = Task.all().order(created_at: :desc)
+    @tasks = current_user.tasks.all.order(created_at: :desc)
     if params[:sort_expired].present? && params[:sort_expired] == 'true'
 			@tasks = Task.all().order(deadline: :desc)
     end
@@ -39,7 +40,7 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
       if @task.save
         flash[:success] = "Task was successfully created."
           redirect_to tasks_url
@@ -52,7 +53,7 @@ class TasksController < ApplicationController
   def update
    
       if @task.update(task_params)
-        flash[:success] = "Task was successfully updated."
+        flash[:warning] = "Task was successfully updated."
         redirect_to tasks_url
       else
         render :edit

@@ -2,6 +2,11 @@ class UsersController < ApplicationController
 
   skip_before_action :login_required, only: [:new, :create]
 
+
+  def index
+    @user = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -9,8 +14,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'Compte crée avec succès, vous pouvez vous connectez'
-      redirect_to profil_path
+      session[:user_id] = @user.id
+      flash[:success] = 'You are login in'
+      redirect_to user_path
     else
       render :new
     end
@@ -18,17 +24,19 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    
   end
 
   def edit
     @user = current_user
+    # @user = User.find(params[:id])
   end
 
   def update
     @user = current_user
-    user_params = params.require(:user).permit(:avatar, :name, :username, :email, :password)
+    user_params = params.require(:user).permit(:firstname, :email, :lastname, :admin)
       if @user.update(user_params)
-        flash[:success] = "Votre compte a été mis à jour avec succès"
+        flash[:warning] = "Profil edited successfuly!"
         render :show
       else
         render :edit

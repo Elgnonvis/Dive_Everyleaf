@@ -11,19 +11,11 @@
 
                     <div class="col-11 ">
                    
-                        <div class="form-group d-flex justify-content-center mb-2 mb-lg-0 ">
-                        
-                            <%= form_with url: tasks_path, method: :get, local: true, class:"form d-flex" do |f| %>
-                            <%= f.label :task_name, class:" ml-5 mr-1 mt-2 w-50" %>
-                            <%= f.text_field :task_name ,class: "form-control mr-4" %>
-                    
-                            <%= f.label :status, class:"mr-2 mt-2" %>
-                            <%= f.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: 'Select status'}, {class: "form-control"}) %>
-                            <%= f.submit "Search", name: nil, data: { disable_with: false }, class: "btn btn-outline-warning ml-3 mr-3" %>
-                            <% end %>
+                        <div class="form-group d-flex justify-content-between mb-2 mb-lg-0 ">
+                            <a href="<%= tasks_path %>" class="btn btn-warning ml-5" role="button">My Tasks</a>
                             <a href="<%= new_task_path %>" class="btn btn-warning" role="button">Add new Task</a>
+                            <a href="<%= new_admin_user_path %>" class="btn btn-success" role="button">Add new User</a>
                             <a href="<%= admin_users_path %>" class="btn btn-info ml-4" role="button">Users Management</a>
-                            
                         </div>
                         
                     </div>

@@ -1,2 +1,30 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= render "partials/header" %>
+<%= form_with(model: @user, local: true ) do |form| %>
+  <br>
+  <%= render "partials/userserrorsany" %>
+  <div class="user">
+    <p>Update Profile?</p>
+    <div class="form">
+        <br>
+        <%=form.label :Lastname %>
+        <%= form.text_field :lastname, placeholder: "Name..." %> 
+        <br>
+         <%=form.label :Fistname %>
+        <%= form.text_field :fistname, placeholder: "Fist..." %> 
+        <br>
+        <br>
+        <%=form.label :Email %>
+        <%= form.email_field :email, placeholder: "Email..." %>
+        <br>
+        <br>
+        <%= form.password_field :password, placeholder: "Password..." %>
+        <br> 
+        <br> 
+        <%= form.password_field :password_confirmation, placeholder: "Password confirmation..." %>
+        <br>
+        <br>
+    </div>
+    <br>
+    <%= form.submit "Update", class: "submit" %>
+  </div>
+<% end %> 

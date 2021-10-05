@@ -8,4 +8,32 @@ class User < ApplicationRecord
     before_validation { email.downcase! }
     
     has_secure_password
+    has_many :tasks, dependent: :destroy
+
+    before_save :change_role
+
+    private
+    def change_role
+        if self.admin  
+            unless User.where(admin: true).count == 1  
+                self.admin = !self.admin
+            end
+        else
+            self.admin = !self.admin
+        end
+    end
+    # def destroy_action
+    #     if User.where(admin: true).count == 1 && self.admin
+    #     throw(:abort)
+    #     end
+    # end
+
+    # def update_action
+    #     user = User.where(id: self.id).where(admin: true)
+    #     # binding.irb
+    #     if User.where(admin: true).count == 1 && user.present? && self.admin == false
+    #     errors.add(:admin, 'It cannot be removed from. At least one administrator is required')
+    #     throw(:abort)
+    #     end
+    # end
 end

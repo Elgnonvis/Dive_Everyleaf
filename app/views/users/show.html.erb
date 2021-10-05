@@ -1,13 +1,8 @@
+<%= render "partials/header" %>
 <p id="notice"><%= notice %></p>
 <div class="d-flex flex-row justify-content-center align-items-center container">
 <div class="">
-  <%if @user.avatar.url%> <%= image_tag @user.avatar.url, class: "img-fluid", width:
-  "300px"%>
-  <%else%>
-  <%end%>
-</div>
-<div></div>
-<div class="">
+<h1 >My account details</h1> <br>
   <p>
     <strong>Firstname: </strong>
     <%= @user.firstname%>
@@ -23,7 +18,8 @@
     <%= @user.email %>
   </p>
 
-  <%= link_to 'Update', edit_user_path(@user), class: "btn btn-warning" %> |
-  <%= link_to 'Back', posts_path , class: "btn btn-danger"%>
+  <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %> |
+  <%= link_to 'Back', tasks_path , class: "btn btn-danger"%>
   </div>
+
 </div>

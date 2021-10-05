@@ -3,16 +3,14 @@ class SessionsController < ApplicationController
   # before_action :only_signed_out, only: [:new, :create]
   
   def new
-
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      flash[:success] = 'Connexion réussie'
-      redirect_to posts_url
-
+      flash[:success] = 'Your are successfully connected (log in) !'
+      redirect_to tasks_url
       else
         flash[:danger] = 'Identifiants incorrects'
         render :new

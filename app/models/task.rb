@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+	belongs_to :user
     validates :task_name, presence:true, length: {minimum:1, maximum:30}
     validates :task_details, presence: true
 	# self.per_page = 10
