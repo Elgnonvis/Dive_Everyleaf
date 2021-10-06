@@ -1,30 +1,31 @@
 <%= render "partials/header" %>
-<%= form_with(model: @user, local: true ) do |form| %>
-  <br>
-  <%= render "partials/userserrorsany" %>
-  <div class="user">
-    <p>Update Profile?</p>
-    <div class="form">
-        <br>
-        <%=form.label :Lastname %>
-        <%= form.text_field :lastname, placeholder: "Name..." %> 
-        <br>
-         <%=form.label :Fistname %>
-        <%= form.text_field :fistname, placeholder: "Fist..." %> 
-        <br>
-        <br>
-        <%=form.label :Email %>
-        <%= form.email_field :email, placeholder: "Email..." %>
-        <br>
-        <br>
-        <%= form.password_field :password, placeholder: "Password..." %>
-        <br> 
-        <br> 
-        <%= form.password_field :password_confirmation, placeholder: "Password confirmation..." %>
-        <br>
-        <br>
-    </div>
-    <br>
-    <%= form.submit "Update", class: "submit" %>
-  </div>
-<% end %> 
+<div class="w-50 d-flex flex-column container justify-content-center align-itmes-center mb-5" style = "padding-top: 1rem; border: 1px solid;">
+  <h1 class ="d-flex flex-column container justify-content-center align-itmes-center">Editing user</h1> <br>
+  <%= form_with(url: @user, local: true ) do |form| %>
+    <%= render "partials/userserrorsany" %>
+     
+          <div class="form-group">
+            <%=form.label :Lastname %>
+            <%= form.text_field :lastname, class:"form-control", placeholder: "Name..." %> 
+          </div>
+          
+          <div class="form-group">
+            <%=form.label :fistname, "Fistname" %>
+            <%= form.text_field :fistname, class:"form-control", placeholder: "Fist..." %> 
+          </div>
+          <div class="form-group">
+            <%=form.label :Email, "Email address" %>
+            <%= form.email_field :email, class:"form-control", placeholder: "Email..." %>
+          </div>
+          <div class="form-group">
+            <%=form.label :Password %>
+            <%= form.password_field :password, class:"form-control", placeholder: "Password..." %>
+          </div>
+          <div class="form-group">
+            <%=form.label :password_confirmation, "Password Confirmation" %>
+            <%= form.password_field :password, class:"form-control", placeholder: "Passwordconfirmation" %>
+          </div>
+
+      <%= form.submit "Update", class: "submit" %>
+  <% end %> 
+</div> <br><br>

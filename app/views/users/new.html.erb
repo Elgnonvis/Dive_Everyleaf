@@ -1,21 +1,17 @@
 <div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
-  <%# <div>
-    <img style = "padding-bottom: 1rem;" src="/instagram.png" class="img-fluid" alt="" >
-  </div> %>
-
-  <h1 class ="d-flex flex-column container justify-content-center align-itmes-center">Sign up</h1> <br>
+ <h1 class ="d-flex flex-column container justify-content-center align-itmes-center">Sign up</h1> <br>
 
   <%= form_with(model: @user, local: true, html: {class:'form-horizontal'}) do |f| %>
     <%= render "partials/userserrorsany" %>
-    <div class="field">
+    <div class="form-group">
       <%= f.email_field :email, placeholder: 'E-mail', class: 'form-control' %>
     </div> <br>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.password_field :password, placeholder: 'Password here', class: 'form-control' %>
     </div><br>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.password_field :password_confirmation, placeholder: 'Confirmation of password', class: 'form-control' %>
     </div><br>
     <div class="actions">
@@ -25,5 +21,5 @@
 </div> <br>
 
 <div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
-  <p> <strong>Have an account? </strong> <a class="text-decoration-none m-4" href="<%= new_session_path %>">Sign in</a></p>
+  <p> <strong>Have an account? </strong> <a class="text-decoration-none m-4" href="<%= new_session_path %>">Sign in now </a></p>
 </div> <br> <br> <br> <br>

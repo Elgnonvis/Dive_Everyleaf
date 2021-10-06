@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     # if current_user.admin
-      @users = User.all
+      @users = User.all.includes(:tasks)
       # @users = @users.page(params[:page]).per(10)
     # else
       
@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(admin_params)
     if @user.save
       flash[:success] = "User account has been successfully created"
       redirect_to admin_users_path
@@ -28,10 +28,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update(admin_params)
       flash[:danger] = "User credentials has been successfully updated"
       redirect_to admin_users_path
     else
@@ -48,10 +49,6 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path
   end
   
-
-  
-  
-
 
   def role
     @user = User.find(params[:id])
@@ -73,8 +70,8 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_params
-    params.require(:user).permit(:email,:password, :password_confirmation)
+  def admin_params
+    params.require(:user).permit(:lastname, :admin, :firstname, :email,:password, :password_confirmation)
   end
 
   def is_admin

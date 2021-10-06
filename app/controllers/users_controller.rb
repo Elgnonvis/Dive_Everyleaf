@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   skip_before_action :login_required, only: [:new, :create]
 
-
   def index
     @user = User.all
   end
@@ -34,7 +33,6 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    user_params = params.require(:user).permit(:firstname, :email, :lastname, :admin)
       if @user.update(user_params)
         flash[:warning] = "Profil edited successfuly!"
         render :show
@@ -51,6 +49,6 @@ class UsersController < ApplicationController
   # end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :firstname, :lastname)
+    params.require(:user).permit(:lastname, :admin, :firstname, :email,:password, :password_confirmation)
   end
 end
