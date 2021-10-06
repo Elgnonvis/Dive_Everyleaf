@@ -6,7 +6,7 @@
         <table class="table table-striped w-100 text-left">
             <thead class="thead-dark">
                 <th scope="col">N°</th>
-                <th>Identity</th>
+                <th>Username</th>
                 <th>Email</th>
                 <th>Tasks</th>
                 <th>Role</th>
@@ -16,7 +16,7 @@
                 <% @users.each do |user| %>
                     <tr>
                         <td> <%=user.id%> </td>
-                        <td> <%= user.lastname %> </td>
+                        <td> <%= user.username %> </td>
                         <td class="user-name"> <%=user.email%> </td>
                         <td> <%=user.tasks.count%> </td> 
                         <td>

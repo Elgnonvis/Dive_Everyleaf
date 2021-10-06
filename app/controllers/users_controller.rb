@@ -34,8 +34,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    update_params = params.require(:user).permit(:lastname, :firstname, :email, :password)
-      if @user.update(update_params)
+      if @user.update(user_params)
         flash[:success] = "Profil edited successfuly!"
         redirect_to tasks_path
       else
@@ -51,6 +50,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end

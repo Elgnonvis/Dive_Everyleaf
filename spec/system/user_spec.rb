@@ -10,7 +10,8 @@ RSpec.describe 'user manager', type: :system do
         context "Being able to newly register users" do
             it "register a new user" do
                 visit new_user_path
-                fill_in "Email",	with: "doe@fil.com" 
+                fill_in "Username",	with: "JOHN"
+                fill_in "Email",	with: "doe@fil.com"
                 fill_in "Password",	with: "password" 
                 fill_in "Password confirmation",	with: "password" 
                 click_on "Create an account"
@@ -48,16 +49,7 @@ RSpec.describe 'user manager', type: :system do
                 expect(page).to have_content "no.admin@gmail.com" 
             end
         end
-        # context "Vous pouvez accéder à votre écran de détails (Ma page)" do
-        #     it "L'utilisateur connecté peut accéder à ses taches" do
-        #         visit new_session_path
-        #         fill_in 'session[email]', with: 'test@mail.com'
-        #         fill_in 'session[password]', with: '123456'
-        #         click_on 'Log in'
-        #         click_on 'My Tasks'
-        #         expect(page).to have_content 'test'
-        #     end
-        # end
+    
         context "When a general user jumps to another person's details screen, it will transition to the task list screen" do
             it "not go to another person's details screen" do
                 visit new_session_path
@@ -128,6 +120,7 @@ RSpec.describe 'user manager', type: :system do
                 click_on("Sign in")
                 visit admin_users_path
                 click_on("Add new User")
+                fill_in "Username",	with: "JOHN"
                 fill_in "Email",	with: "doe@fil.com" 
                 fill_in "Password",	with: "password"
                 click_on "Create account"
@@ -155,6 +148,7 @@ RSpec.describe 'user manager', type: :system do
                 fill_in "Password",	with: "password" 
                 click_on("Sign in")
                 visit edit_admin_user_path(@user.id)
+                fill_in "Username",	with: "JOHN"
                 fill_in "Email",	with: "doe@fil.com" 
                 fill_in "Password",	with: "password"
                 click_on "Update account"
@@ -176,3 +170,15 @@ RSpec.describe 'user manager', type: :system do
         end
     end    
 end
+
+
+# context "Vous pouvez accéder à votre écran de détails (Ma page)" do
+#     it "L'utilisateur connecté peut accéder à ses taches" do
+#         visit new_session_path
+#         fill_in 'session[email]', with: 'test@mail.com'
+#         fill_in 'session[password]', with: '123456'
+#         click_on 'Log in'
+#         click_on 'My Tasks'
+#         expect(page).to have_content 'test'
+#     end
+# end

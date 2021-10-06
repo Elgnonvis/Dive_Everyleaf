@@ -75,7 +75,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def admin_params
-    params.require(:user).permit(:lastname, :admin, :firstname, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :admin, :email, :password, :password_confirmation)
   end
 
   # def not_authorised

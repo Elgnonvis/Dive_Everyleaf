@@ -18,6 +18,7 @@
       <thead>
         <tr>
           <th>Task name </th>
+          <th>Created by</th>
           <th>Description </th>
           <th>Priority </th>
           <th>Status </th>
@@ -29,8 +30,8 @@
       <tbody>
         <% @tasks.each do |task| %>
           <tr>
-            
             <td class="task_row" ><%= task.task_name %></td>
+            <td><%= task.user.username %></td>
             <td><%= truncate(task.task_details, length: 50) %></td>
             <td><%= task.priority %></td>
             <td><%= task.status %></td>

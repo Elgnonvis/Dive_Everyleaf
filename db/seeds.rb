@@ -15,8 +15,9 @@
     # )
 
 User.create(
+    username: "Love",
     email:"admin@gmail.com", 
-    password:"GrandAdmin", 
+    password:"GrandAdmin",
     password_confirmation:"GrandAdmin", 
     admin: true
 )

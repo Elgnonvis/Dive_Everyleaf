@@ -8,8 +8,8 @@ class User < ApplicationRecord
     validates :password, presence: true,
         length: {minimum: 8},
         allow_nil: true
-    # validates :lastname, presence: true,
-    #     allow_nil: true
+    validates :username, presence: true,
+        allow_nil: true
     # validates :firstname, presence: true,
     #     allow_nil: true
     has_secure_password

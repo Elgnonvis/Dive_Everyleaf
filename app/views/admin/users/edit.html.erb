@@ -5,25 +5,23 @@
 
   <%= form_with(model: [:admin, @user], local: true, url: edit_or_create(@user), html: {class:'form-horizontal'}) do |f| %>
     <%= render "partials/userserrorsany", user: @user %>
-    <div class="form-group mt-1">
-      <%= f.text_field :lastname, placeholder: 'Last Name', class: 'form-control' %>
-    </div>
+   
     <div class="form-group">
-      <%= f.text_field :firstname, placeholder: 'Fist name', class: 'form-control' %>
+      <%=f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%=f.label :email %>
-      <%= f.email_field :email, placeholder: 'E-mail', class: 'form-control' %>
+      <%= f.email_field :email, class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%=f.label :password %>
-      <%= f.password_field :password, placeholder: 'Password here', class: 'form-control' %>
+      <%= f.password_field :password, class: 'form-control' %>
     </div>
     <div class="form-check">
       <%= f.label :admin, 'Admin ?' %>
-      
       <%= f.check_box :admin %>
     </div>
     <div class="actions mt-1">
