@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     def login_required
         redirect_to new_session_path unless current_user   
     end
-    # def admin
-    #     redirectto new_sessions-path,
-    #     flash[:danger] = "Only for Admin!" unless current_user.admin    
-    # end
+    def admin
+        flash[:danger] = "Only for Admin!" unless current_user.admin
+        redirect_to tasks_path   
+    end
 end

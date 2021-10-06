@@ -19,7 +19,7 @@
                     
                             <%= f.label :status, class:"mr-2 mt-2" %>
                             <%= f.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: 'Select status'}, {class: "form-control"}) %>
-                            <%= f.submit "Search", name: nil, data: { disable_with: false }, class: "btn btn-outline-warning ml-3 mr-3" %>
+                            <%= f.submit "Search", name: nil, data: { disable_with: false }, class: "btn btn-outline-light ml-3 mr-3" %>
                             <% end %>
                             <a href="<%= new_task_path %>" class="btn btn-warning" role="button">Add new Task</a>
                             <a href="<%= admin_users_path %>" class="btn btn-info ml-3 mr-1" role="button">Users Management</a>

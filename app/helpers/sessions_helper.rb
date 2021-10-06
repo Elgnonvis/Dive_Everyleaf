@@ -4,5 +4,8 @@ module SessionsHelper
     end
     def logged_in?
         current_user.present?
-      end
+    end
+    def only_signed_out
+        redirect_to profil_path if logged_in?
+    end
 end
