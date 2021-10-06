@@ -12,10 +12,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.admin = false
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = 'You are login in'
-      redirect_to user_path
+      redirect_to tasks_path
     else
       render :new
     end
@@ -33,8 +34,9 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-      if @user.update(user_params)
-        flash[:warning] = "Profil edited successfuly!"
+    update_params = params.require(:user).permit(:lastname, :firstname, :email, :password)
+      if @user.update(update_params)
+        flash[:success] = "Profil edited successfuly!"
         render :show
       else
         render :edit
@@ -49,6 +51,6 @@ class UsersController < ApplicationController
   # end
 
   def user_params
-    params.require(:user).permit(:lastname, :admin, :firstname, :email,:password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

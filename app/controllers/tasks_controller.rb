@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 		elsif params[:status].present?
 			@tasks = Task.status_search(params[:status])
 		end
-    @tasks = @tasks.page(params[:page])
+    @tasks = current_user.tasks.page(params[:page])
   end
 
   # GET /tasks/1 or /tasks/1.json

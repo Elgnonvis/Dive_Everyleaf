@@ -19,6 +19,7 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(admin_params)
+    # @user.user.admin = false
     if @user.save
       flash[:success] = "User account has been successfully created"
       redirect_to admin_users_path
@@ -33,7 +34,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(admin_params)
-      flash[:danger] = "User credentials has been successfully updated"
+      flash[:success] = "User credentials has been successfully updated"
       redirect_to admin_users_path
     else
       render :new
@@ -71,8 +72,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def admin_params
-    params.require(:user).permit(:lastname, :admin, :firstname, :email,:password, :password_confirmation)
+    params.require(:user).permit(:lastname, :admin, :firstname, :email, :password, :password_confirmation)
   end
+
+  # def not_authorised
+  #   redirect_to tasks_path if !current_user.admin
+  # end
 
   def is_admin
     if current_user
