@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
     before_destroy :check_if_last_admin, prepend: true
     before_update :check_if_admin, prepend: true
-
+    paginates_per 5
     private
     def check_if_last_admin
         throw :abort if User.where(admin: true).count == 1

@@ -4,7 +4,9 @@ class Admin::UsersController < ApplicationController
 
   def index
     # if current_user.admin
-      @users = User.all.includes(:tasks)
+    @all_users_count = User.count
+    @users = User.order(created_at: :desc).page(params[:page]).includes(:tasks)
+    # @users = User.all.includes(:tasks)
       # @users = @users.page(params[:page]).per(10)
     # else
       
@@ -43,6 +45,7 @@ class Admin::UsersController < ApplicationController
   end
   
   def show
+    @tasks = @user.tasks.page(params[:page]).per(5)
   end
 
   def destroy

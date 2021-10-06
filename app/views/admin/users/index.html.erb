@@ -33,5 +33,10 @@
                 <% end %>
             </tbody>
         </table>
+
+    <div class="container pagination justify-content-center" >
+      <%= paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+    </div>
+ 
     </div>
 </div>
