@@ -20,15 +20,15 @@ User.create(
     password_confirmation:"GrandAdmin", 
     admin: true
 )
-status = ['Unstarted', 'In progress', 'Completed']
+# status = ['Unstarted', 'In progress', 'Completed']
 
-5.times do |n|
-    User.create(
-        email: Faker::Internet.unique.email,
-        password: "password",
-        password_confirmation: "password"
-    )
-end
+# 5.times do |n|
+#     User.create(
+#         email: Faker::Internet.unique.email,
+#         password: "password",
+#         password_confirmation: "password"
+#     )
+# end
 
 
 
