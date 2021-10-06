@@ -17,7 +17,6 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    redirect_to tasks_path if current_user
   end
 
   def create

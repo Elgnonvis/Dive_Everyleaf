@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :tasks
   # resources :labels, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create, :edit]
+  resources :users, only: [:new, :create, :edit, :update]
   get '/profil', to: 'users#show', as: :profil
   namespace :admin do
     resources :users

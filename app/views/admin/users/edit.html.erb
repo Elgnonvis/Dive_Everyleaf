@@ -1,5 +1,5 @@
 <%= render "partials/adminusersindex" %>
-<div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
+<div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "border: 1px solid;">
 
   <h1 class ="d-flex flex-column container justify-content-center align-itmes-center">Editing user account</h1>
 
@@ -21,14 +21,14 @@
       <%=f.label :password %>
       <%= f.password_field :password, placeholder: 'Password here', class: 'form-control' %>
     </div>
-    <div class="form-check d-flex">
+    <div class="form-check">
       <%= f.label :admin, 'Admin ?' %>
       
       <%= f.check_box :admin %>
     </div>
     <div class="actions mt-1">
       <button class="btn btn-success w-100" type="submit">Update account</button>
-      </div>
+    </div>
   <% end %>
-  <a href = "<%= admin_users_path  %>" class="btn btn-dark w-100">Back</a> <br> <br>
+  <a href = "<%= admin_users_path  %>" class="btn btn-dark w-100 mb-1">Back</a>
 </div>

@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-
+  # before_action :set_user, only: %i[ show edit update destroy ]
   skip_before_action :login_required, only: [:new, :create]
 
   def index
-    @user = User.all
+    # @user = User.all
   end
 
   def new
@@ -25,11 +25,10 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    
   end
 
   def edit
-    @user = current_user
+    # @user = current_user
     # @user = User.find(params[:id])
   end
 
@@ -38,7 +37,7 @@ class UsersController < ApplicationController
     update_params = params.require(:user).permit(:lastname, :firstname, :email, :password)
       if @user.update(update_params)
         flash[:success] = "Profil edited successfuly!"
-        render :show
+        redirect_to tasks_path
       else
         render :edit
       end
@@ -47,9 +46,9 @@ class UsersController < ApplicationController
 
   private
 
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)

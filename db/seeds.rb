@@ -30,8 +30,6 @@ User.create(
 #     )
 # end
 
-
-
 @taskss=Task.where(user_id: nil)
 @taskss.each do |e|
 e.update(user_id:1)
