@@ -1,5 +1,5 @@
 <div class="w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
- <h1 class ="d-flex flex-column justify-content-around align-itmes-center ml-5">Sign up</h1> <br>
+ <h1 class ="d-flex flex-column justify-content-around align-itmes-center ml-5">Sign up</h1>
 
   <%= form_with(model: @user, local: true, html: {class:'form-horizontal'}) do |f| %>
     <%= render "partials/userserrorsany" %>
@@ -27,6 +27,6 @@
       </div>
   <% end %>
 </div>
-<div class=" mt-2 w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
+<div class=" mt-1 mb-4 w-50 d-flex flex-column container justify-content-center align-itmes-center" style = "padding-top: 1rem; border: 1px solid;">
     <p class ="ml-5"><strong>Have an account? </strong><a class="text-decoration-none m-5" href="<%= new_session_path %>">Sign in now</a></p>
-</div>
+</div>  <br>  <br>

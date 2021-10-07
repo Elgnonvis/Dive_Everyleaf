@@ -2,6 +2,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class=" container-fluid d-flex flex-column justify-content-center w-50  ">
+<h1>Task details</h1> <br>
   <p>
     <strong>Name: </strong>
     <%= @task.task_name %>
@@ -22,7 +23,14 @@
   <p>
     <strong>Deadline: </strong>
     <%= @task.deadline %>
-  </p>
+  </p> <br>
+  
+  <div>
+    <h3>List of label associated with the task</h3> <br>
+    <% @task.labels.pluck(:label_name).each do |task_label| %>
+      <p> <%= task_label %> </p>
+    <% end %>
+  </div> <br>
   <a href = "<%= edit_task_path(@task) %>" class="btn btn-warning">Edit</a> <br>
   <a href = "<%= tasks_path %>" class="btn btn-success">Back</a>  
 </div>

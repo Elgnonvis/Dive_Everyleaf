@@ -1,10 +1,11 @@
 <%= render "partials/header" %>
 <div class="form-actions d-flex flex-column justify-content-center align-items-center w-100">
-    <h1>New Task</h1>
+    
     <%= form_with(model: @task, local: true) do |form| %>
+        <h1>New Task</h1>
         <%= render "partials/taskserrorsany", task: @task %>
 
-        <div class="form-group">
+        <div class="form-group purple-border">
             <%= form.label :task_name %>
             <%= form.text_field :task_name, id: "task", class: 'form-control' %>
         </div>
@@ -28,8 +29,18 @@
             <%= form.label :deadline %>
             <%= form.datetime_select :deadline, id: "deadline", order: [:day, :month, :year, :hour, :minute], class: 'form-control', use_month_numbers: false %>
         </div>
+
+        <h2>Labels</h2>
+  
+       <div class="form-group " >
+        <% Label.all.each do |label| %>
+            <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id], class: 'form-check ' %>
+            <%= form.label :label_ids, label.label_name, value: "#{label.id}", class: 'form-control ' %> 
+        <% end %>
+        </div>  
+
         <div class="form-actions">
-            <button class="form-actions btn btn-primary w-100" type="submit">CreateTask </button>
+            <button class="form-actions btn btn-primary w-100" type="submit">Create Task </button>
         </div>
         <div class="form-actions mt-1">
             <a class="btn btn-lg btn-danger w-100" href = "<%= tasks_path %>"> Back</a>

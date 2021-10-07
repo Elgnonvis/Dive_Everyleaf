@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 # User.create!(
     #     name: "tom",
     #     email: "tom@gmail.com",
@@ -35,6 +36,18 @@ User.create(
 @taskss.each do |e|
 e.update(user_id:1)
 end
+
+# Alphabet phonétique de l'OTAN
+Label.create(label_name: 'Equipe Alpha')
+Label.create(label_name: 'Equipe Bravo')
+Label.create(label_name: 'Equipe Charlie')
+Label.create(label_name: 'Equipe Delta')
+Label.create(label_name: 'Equipe Echo')
+Label.create(label_name: 'Equipe Foxtrot')
+Label.create(label_name: 'Equipe Lima')
+Label.create(label_name: 'Equipe Tango')
+
+
 
 
 
