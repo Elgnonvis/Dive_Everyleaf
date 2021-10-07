@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :labels, only: [:create, :index]
   # get 'sessions/new'
   # get 'users/new'
   # get 'users/create'
