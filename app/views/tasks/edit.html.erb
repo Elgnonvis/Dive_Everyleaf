@@ -1,11 +1,38 @@
-
+<%= render "partials/header" %>
 <div class=" container-fluid d-flex flex-column justify-content-center w-50  ">
-<h1>Editing Task</h1>
+<h1 class ="">Editing Task</h1>
 
-<%= render 'form', task: @task %>
-<button class="btn btn-warning w-50" type="submit">Update Task </button> <br>
-<div>
+<%= form_with(model: @task, local: true) do |form| %>
+  <%= render "partials/taskserrorsany", task: @task %>
+
+  <div class="form-group mt-1">
+    <%= form.label :task_name %>
+    <%= form.text_field :task_name, id: "task", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :task_details %>
+    <%= form.text_area :task_details, class: 'form-control' %>
+  </div>
+
+   <div class="form-group">
+    <%= form.label :priority %>
+    <%= form.select :priority, ['Low', 'Medium', 'High'], id: "priority", class: 'form-control' %>
+  </div>
+
+   <div class="form-group">
+    <%= form.label :status %>
+    <%= form.select :status, ['Unstarted','In progress', 'Completed'], id: "status", class: 'form-control' %>
+  </div>
+
+   <div class="form-group">
+      <%= form.label :deadline %>
+      <%= form.datetime_select :deadline, id: "deadline", order: [:day, :month, :year, :hour, :minute], class: 'form-control', use_month_numbers: false %>
+  </div>
+   <button class="form-actions btn btn-warning w-75" type="submit">Update Task </button> 
+<% end %>
+<div class ="ml-5 mt-1">
     <a href = "<%= task_path(@task) %>" class="btn btn-info w-25">Show</a>
     <a href = "<%= tasks_path %>" class="btn btn-dark w-25">Back</a>  
-</div>
+</div> <br>
 </div> <br>

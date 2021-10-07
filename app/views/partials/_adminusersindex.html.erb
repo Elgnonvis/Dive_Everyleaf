@@ -1,0 +1,39 @@
+<header class="p-2 bg-primary text-white fixed-top ">
+    <div class="container-fluid row d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+     
+        <div class="col-1">
+            <a href="/" class="navbar-brand mb-2 mb-lg-0 text-white"><span class="fb">Task_Management_Board</span></a>
+        </div>
+        
+        <div class=" col-11">
+            <% if logged_in? %> 
+                <div class="row">
+
+                    <div class="col-11 ">
+                   
+                        <div class="form-group d-flex justify-content-end mb-2 mb-lg-0 ">
+                            <a href="<%= new_task_path %>" class="btn btn-warning " role="button">Add new Task</a>
+                            <a href="<%= tasks_path %>" class="btn btn-warning mr-5 ml-3" role="button">My Tasks</a>
+                            <a href="<%= new_admin_user_path %>" class="btn btn-success ml-5 mr-2 " role="button">Add new User</a>
+                            <a href="<%= admin_users_path %>" class="btn btn-info ml-2 " role="button">Users Management</a>
+                        </div>
+                        
+                    </div>
+        
+                    <div class="dropdown  col-1">
+                        <a href="" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="/avatar.png" class="rounded-circle",height="32", width="32", alt="Avatar" >
+                        </a>
+                        <ul class="dropdown-menu text-small text-decoration-none" aria-labelledby="dropdownUser">
+                            <li class = "dropdown-item btn justify-content-center"><a class="btn btn-success" href="/profil">Mon profil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class ="dropdown-item btn justify-content-center text-decoration-none">
+                                <%= link_to "Log out", session_path(current_user.id), method: :delete, class:"btn btn-danger" %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+             <% end %>
+        </div> 
+    </div>
+</header>

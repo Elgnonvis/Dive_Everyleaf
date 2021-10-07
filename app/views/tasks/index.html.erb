@@ -1,37 +1,24 @@
+<%= render "partials/header" %>
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <h1 class="mb-4">Tasks list</h1>
 
-<div class="row">
-  <div class="form-group col-md-3">
-    <%= form_with url: tasks_path, method: :get, local: true, class:"form my-2 my-lg-0" do |f| %>
-      <%= f.label :task_name %>
-      <%= f.text_field :task_name ,class: "form-control" %>
-  </div>
-
-    <div class="form-group col-md-3">
-       <%= f.label :status %>
-       <%= f.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: 'Select status'}, {class: "form-control"}) %>
-    </div>
-        <%= f.submit "Search", name: nil, data: { disable_with: false }, class: " col-6 btn btn-outline-success my-2 my-sm-0 mr-5" %>
-    <% end %>
-    <div class=" mr-2">
-      <a href = "<%= tasks_path(sort_expired: "true") %>" class="btn btn-primary">Sort by end deadline</a>
-    </div>
-    <div class="">
-      <a href = "<%= tasks_path(sort_priority: "true") %>" class="btn btn-primary">Sort by priority </a>
-  </div>
-</div>
+<div class="container text-center">
+<h1 class ="">General tasks list</h1> <br>
 
 
-  
-
-  <div class ='table-responsive mb-4'>
-    <a href = "<%= new_task_path %>" class="btn btn-primary mb-3 mt-3" >Add new Task</a> 
+  <div class ='table-responsive '>
+   <div class="d-flex">
+      <div class=" mr-5">
+        <a href = "<%= tasks_path(sort_expired: "true") %>" class="btn btn-primary">Sort by end deadline</a>
+      </div>
+      <div class="">
+        <a href = "<%= tasks_path(sort_priority: "true") %>" class="btn btn-primary">Sort by priority </a>
+      </div>
+  </div> <br>
     <table class = "table table-striped table-hover border" >
       <thead>
         <tr>
           <th>Task name </th>
+          <th>Created by</th>
           <th>Description </th>
           <th>Priority </th>
           <th>Status </th>
@@ -44,6 +31,7 @@
         <% @tasks.each do |task| %>
           <tr>
             <td class="task_row" ><%= task.task_name %></td>
+            <td><%= task.user.username %></td>
             <td><%= truncate(task.task_details, length: 50) %></td>
             <td><%= task.priority %></td>
             <td><%= task.status %></td>
@@ -58,8 +46,6 @@
       </tbody>
     </table>
   
-
-    
     <div class="container pagination justify-content-center" >
       <%= paginate @tasks, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
     </div>

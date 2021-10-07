@@ -1,0 +1,50 @@
+<header class="p-2 bg-primary text-white fixed-top ">
+    <div class="container-fluid row d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+     
+        <div class="col-1">
+            <a href="/" class="navbar-brand mb-2 mb-lg-0 text-white"><span class="fb">Everyleaf</span></a>
+        </div>
+        
+        <div class="col-11">
+                <% if logged_in? %> 
+                <div class="col-10">
+                    <a href="<%= new_task_path %>" class="btn btn-warning mr-3" role="button">Add new Task</a>
+               
+    
+                    <div class="form-group d-flex justify-content-center">
+                    
+                        <%= form_with url: tasks_path, method: :get, local: true, class:"form d-flex" do |f| %>
+                        <%= f.label :task_name, class:" mr-1 w-50 mt-4" %>
+                        <%= f.text_field :task_name ,class: "form-control mr-3 mt-3" %>
+                
+                        <%= f.label :status, class:"mr-2 mt-4" %>
+                        <%= f.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: 'Select status'}, {class: "form-control mt-3"}) %>
+                        <%= f.submit "Search", name: nil, data: { disable_with: false }, class: "btn btn-outline-warning ml-3 mr-3 mt-3" %>
+                        <% end %>
+                    </div>
+                </div>
+                
+    
+                <div class="dropdown  col-1">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/avatar.png" class="rounded-circle",height="32", width="32", alt="Avatar" >
+                
+                    </a>
+                    <ul class="dropdown-menu text-small text-decoration-none" aria-labelledby="dropdownUser1">
+                        <li class = "btn btn-secondary m-2 justify-content-center"><a class="dropdown-item" href="">Mon profil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class ="btn btn-danger m-2 justify-content-center text-decoration-none">
+                            <%= link_to "Se déconnecter", session_path(current_user.id), method: :delete, class:"btn" %>
+                        </li>
+                    </ul>
+                </div>
+                
+                <% end %>
+            
+        </div>
+        
+        
+        
+         
+    </div>
+</header>

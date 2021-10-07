@@ -1,8 +1,39 @@
+<%= render "partials/header" %>
 <div class="form-actions d-flex flex-column justify-content-center align-items-center w-100">
-    <h1>New Task</h1> <br>
-    <%= render 'form', task: @task %> <br>
-    <div class="form-actions d-flex flex-column justify-content-center align-items-center w-75">
-        <a class="btn btn-lg btn-danger w-50 mb-5 " href = "<%= tasks_path %>"> Back</a>
-    </div>
-</div> <br>
-<%# <br> <br> %>
+    <h1>New Task</h1>
+    <%= form_with(model: @task, local: true) do |form| %>
+        <%= render "partials/taskserrorsany", task: @task %>
+
+        <div class="form-group">
+            <%= form.label :task_name %>
+            <%= form.text_field :task_name, id: "task", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :task_details %>
+            <%= form.text_area :task_details, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :priority %>
+            <%= form.select :priority, ['Low', 'Medium', 'High'], id: "priority", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :status %>
+            <%= form.select :status, ['Unstarted','In progress', 'Completed'], id: "status", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :deadline %>
+            <%= form.datetime_select :deadline, id: "deadline", order: [:day, :month, :year, :hour, :minute], class: 'form-control', use_month_numbers: false %>
+        </div>
+        <div class="form-actions">
+            <button class="form-actions btn btn-primary w-100" type="submit">CreateTask </button>
+        </div>
+        <div class="form-actions mt-1">
+            <a class="btn btn-lg btn-danger w-100" href = "<%= tasks_path %>"> Back</a>
+        </div> <br> <br>
+    <% end %>
+</div>
+
