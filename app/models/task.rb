@@ -22,12 +22,13 @@ class Task < ApplicationRecord
 	  where(status: query)
 	end
 
-	scope :label_search, -> (query) { 
-		@ids = Task_label_relation.where(label_id: query).pluck(:task_id).where(id: @ids)}
+	# scope :label_search, -> (query) { 
+	# 	@ids = Task_label_relation.where(label_id: query).pluck(:task_id)
+	# 	.where(id: @ids)}
 
-		# Label.joins(:tasks => :task_label_relation)
-		# .where(task_label_relations: {user_id: @user_id})
-		# .pluck(: 'labels.id')
+	scope :label_search, -> (query) { 
+		@ids = TaskLabelRelation.where(label_id: query).pluck(:task_id)}
+
 
 	scope :user_task_list, -> (query) {where(user_id: query)}
 	def user_task_list(query)

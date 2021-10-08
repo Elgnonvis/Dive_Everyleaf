@@ -5,7 +5,7 @@ FactoryBot.define do
     priority { 'High' }
     status {'Unstated'}
     deadline { Date.new(2021, 10, 10) }
-    user_id {'1'} 
+    user_id {1} 
   end
   factory :second_task, class: Task do
     task_name { 'Task name 2 made by Factory' }

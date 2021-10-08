@@ -19,7 +19,8 @@ class TasksController < ApplicationController
       if params[:status].present?
 			  @tasks = Task.status_search(params[:status]).page(params[:page])
       elsif params[:label_id].present?
-        @tasks = Task.label_search(params[:label_id]).page params[:page]
+        ids = Task.label_search(params[:label_id])
+        @tasks = Task.where({id: ids}).page(params[:page])
       end
 		end
   end

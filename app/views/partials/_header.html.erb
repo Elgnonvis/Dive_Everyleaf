@@ -12,7 +12,6 @@
                     <div class="col-11 ">
                    
                         <div class="form-group d-flex justify-content-center mb-2 mb-lg-0 ">
-                        
                             <%= form_with url: tasks_path, method: :get, local: true, class:"form d-flex" do |f| %>
                             <%= f.label :task_name, class:" ml-1 mr-1 mt-2 w-50" %>
                             <%= f.text_field :task_name ,class: " mr-2" %>

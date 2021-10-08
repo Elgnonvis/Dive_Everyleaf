@@ -3,7 +3,14 @@ FactoryBot.define do
     username { "Not Admin" }
     email { "no.admin@gmail.com" }
     password { "no.admin" }
-    admin { false }
+    # admin { false }
+  end
+
+  factory :user2, class: User do
+    username { "Allow" }
+    email { "no.admin2@gmail.com" }
+    password { "no.admin" }
+    # admin { false }
   end
 
   factory :user_admin, class: User do
