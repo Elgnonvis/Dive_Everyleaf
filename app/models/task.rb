@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
 	belongs_to :user
 	has_many :task_label_relations, dependent: :destroy
-	has_many :labels, through: :task_label_relations, source: :label
+	has_many :labels, through: :task_label_relations
+	# has_many :labels, through: :task_label_relations, source: :label
 
     validates :task_name, presence:true, length: {minimum:1, maximum:30}
     validates :task_details, presence: true
@@ -30,10 +31,10 @@ class Task < ApplicationRecord
 		@ids = TaskLabelRelation.where(label_id: query).pluck(:task_id)}
 
 
-	scope :user_task_list, -> (query) {where(user_id: query)}
-	def user_task_list(query)
-	  where(user_id: query)
-	end
+	# scope :user_task_list, -> (query) {where(user_id: query)}
+	# def user_task_list(query)
+	#   where(user_id: query)
+	# end
 
 	#serach with scope 2 (not tested)
 	# scope :get_all, ->(){order(limit_date: :desc)}

@@ -1,20 +1,16 @@
 Rails.application.routes.draw do
-  resources :labels
-  # get 'users/new'
-  # get 'users/create'
-  # get 'users/show'
-  # get 'users/edit'
-
   root 'tasks#index'
   resources :tasks
-  # resources :labels, only: [:new, :create]
+  resources :labels
   resources :sessions, only: [:new, :create, :destroy]
+ 
+  
   resources :users, only: [:new, :create, :edit, :update]
   get '/profil', to: 'users#show', as: :profil
   namespace :admin do
     resources :users
   end
-
+ # resources :labels, only: [:new, :create]
   # namespace :admin do
   #   resources :users do
   #     collection do
