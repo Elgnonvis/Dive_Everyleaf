@@ -23,8 +23,8 @@ class TasksController < ApplicationController
       end
 		end
   end
-  #params[:label_id].present?
-  # @tasks = all_tasks.label_task_search(params[:label_id]).page params[:page]
+  # label = Label.find(params[:task][:label_id].to_i)
+  # @tasks = label.tasks.where(user_id: current_user.id).page params[:page]
 
   # GET /tasks/1 or /tasks/1.json
   def show
@@ -79,7 +79,7 @@ class TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:task_name, :task_details, :priority, :deadline, :status, label_ids: [])
+    params.require(:task).permit(:task_name, :task_details, :priority, :deadline, :status, :label_ids)
   end
 end
 

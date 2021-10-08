@@ -1,7 +1,7 @@
 #bundle exec rspec spec/system/user_spec.rb
 require 'rails_helper'
 RSpec.describe 'user manager', type: :system do
-    before do
+    before(:each) do
         @user = FactoryBot.create(:user)
         @user_admin = FactoryBot.create(:user_admin)
     end

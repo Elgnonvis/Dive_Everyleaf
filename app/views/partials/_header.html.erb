@@ -11,22 +11,23 @@
 
                     <div class="col-11 ">
                    
-                        <div class="form-group d-flex justify-content-space-around mb-2 mb-lg-0 ">
+                        <div class="form-group d-flex justify-content-center mb-2 mb-lg-0 ">
                         
                             <%= form_with url: tasks_path, method: :get, local: true, class:"form d-flex" do |f| %>
                             <%= f.label :task_name, class:" ml-1 mr-1 mt-2 w-50" %>
-                            <%= f.text_field :task_name ,class: "form-control mr-2" %>
+                            <%= f.text_field :task_name ,class: " mr-2" %>
                     
                             <%= f.label :status, class:"mr-1 mt-2" %>
-                            <%= f.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: 'Select here'}, {class: "form-control"}) %>
+                            <%= f.select( :status, ['Unstarted', 'In progress', 'Completed'], {include_blank: true}, {class: "form-select"}) %>
                             
+                           
                             <%= f.label :label_id, class:"mr-1 mt-2 ml-2" %>
-                            <%= f.select( :label_id, Label.all.collect { |p| [ p.label_name, p.id ] }, {class: "form-control"}, include_blank: true) %>
-                            
+                            <%= f.select( :label_id, Label.all.collect { |p| [ p.label_name, p.id ] }, {include_blank: true}, {class: "form-select"}) %>
+                           
                             <%= f.submit "Search", name: nil, data: { disable_with: false }, class: "btn btn-outline-light ml-2 mr-2" %>
                             <% end %>
 
-                            <a href="<%= new_task_path %>" class="btn btn-warning" role="button">Add Task</a>
+                            <a href="<%= new_task_path %>" class="btn btn-warning ml-5" role="button">Add Task</a>
                             <a href="<%= admin_users_path %>" class="btn btn-info ml-3 mr-2" role="button">Users board</a>
                              <%= link_to "Log out", session_path(current_user.id), method: :delete, class:"btn btn-danger" %>
                         </div>

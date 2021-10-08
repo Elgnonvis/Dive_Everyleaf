@@ -2,6 +2,7 @@ class Task < ApplicationRecord
 	belongs_to :user
 	has_many :task_label_relations, dependent: :destroy
 	has_many :labels, through: :task_label_relations, source: :label
+
     validates :task_name, presence:true, length: {minimum:1, maximum:30}
     validates :task_details, presence: true
 	paginates_per 5
@@ -21,10 +22,12 @@ class Task < ApplicationRecord
 	  where(status: query)
 	end
 
-	scope :label_search, -> (query) {
-		@ids = Labelling.where(label_id: query).pluck(:task_id)
-		where(id: @ids)}
+	scope :label_search, -> (query) { 
+		@ids = Task_label_relation.where(label_id: query).pluck(:task_id).where(id: @ids)}
 
+		# Label.joins(:tasks => :task_label_relation)
+		# .where(task_label_relations: {user_id: @user_id})
+		# .pluck(: 'labels.id')
 
 	scope :user_task_list, -> (query) {where(user_id: query)}
 	def user_task_list(query)
