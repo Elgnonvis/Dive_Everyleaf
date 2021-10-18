@@ -1,12 +1,15 @@
 class Task < ApplicationRecord
 	belongs_to :user
-	# has_many :tag_task, dependent: :destroy
+	has_many :task_label_relations, dependent: :destroy
+	has_many :labels, through: :task_label_relations
+	# has_many :labels, through: :task_label_relations, source: :label
+
     validates :task_name, presence:true, length: {minimum:1, maximum:30}
     validates :task_details, presence: true
-	# self.per_page = 10
-	# willPaginate.per_page = 10
 	paginates_per 5
 	enum priority: {Low: 1, Medium: 2 , High: 3}
+	scope :default_order, -> {order(created_at: :desc)}
+	# Ex:- scope :active, -> {where(:active => true)}
 	
 
 	#search with scope1
@@ -19,6 +22,19 @@ class Task < ApplicationRecord
 	def status_search(query)
 	  where(status: query)
 	end
+
+	# scope :label_search, -> (query) { 
+	# 	@ids = Task_label_relation.where(label_id: query).pluck(:task_id)
+	# 	.where(id: @ids)}
+
+	scope :label_search, -> (query) { 
+		@ids = TaskLabelRelation.where(label_id: query).pluck(:task_id)}
+
+
+	# scope :user_task_list, -> (query) {where(user_id: query)}
+	# def user_task_list(query)
+	#   where(user_id: query)
+	# end
 
 	#serach with scope 2 (not tested)
 	# scope :get_all, ->(){order(limit_date: :desc)}

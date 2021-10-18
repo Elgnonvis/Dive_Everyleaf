@@ -25,11 +25,22 @@
     <%= form.select :status, ['Unstarted','In progress', 'Completed'], id: "status", class: 'form-control' %>
   </div>
 
-   <div class="form-group">
+  <div class="form-group">
       <%= form.label :deadline %>
       <%= form.datetime_select :deadline, id: "deadline", order: [:day, :month, :year, :hour, :minute], class: 'form-control', use_month_numbers: false %>
-  </div>
-   <button class="form-actions btn btn-warning w-75" type="submit">Update Task </button> 
+  </div> <br>
+
+<h4>Labels</h4>
+  
+  <div class="form-group " >
+    <% Label.all.each do |label| %>
+    <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id], class: 'form-check ' %>
+    <%= form.label :label_ids, label.label_name, value: "#{label.id}", class: 'form-control ' %> 
+    <% end %>
+  </div>  
+  
+  
+  <button class="form-actions btn btn-warning w-75" type="submit">Update Task </button> 
 <% end %>
 <div class ="ml-5 mt-1">
     <a href = "<%= task_path(@task) %>" class="btn btn-info w-25">Show</a>

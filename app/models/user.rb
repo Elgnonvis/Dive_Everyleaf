@@ -1,24 +1,28 @@
 class User < ApplicationRecord
+
+    has_secure_password
+    has_many :tasks, dependent: :destroy
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
     validates :email, presence: true,
         uniqueness: { case_sensitive: false},
         length: {maximum: 255},
         format: { with: VALID_EMAIL_REGEX }
+
     before_validation { email.downcase! }
     validates :password, presence: true,
         length: {minimum: 8},
         allow_nil: true
     validates :username, presence: true,
         allow_nil: true
-    # validates :firstname, presence: true,
-    #     allow_nil: true
-    has_secure_password
-    has_many :tasks, dependent: :destroy
+   
 
     before_destroy :check_if_last_admin, prepend: true
     before_update :check_if_admin, prepend: true
     paginates_per 5
+
     private
+    
     def check_if_last_admin
         throw :abort if User.where(admin: true).count == 1
     end
